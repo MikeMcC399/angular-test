@@ -1,4 +1,4 @@
-name: cypress-test-no-start
+name: cypress-test-node22
 on:
   workflow_dispatch:
 
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        node: [16, 18]
+        node: [22]
     name: Angular E2E test on Node.js ${{ matrix.node }}
     steps:
       - uses: actions/setup-node@v4
@@ -20,6 +20,6 @@ jobs:
       - name: Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          # start: npm start
+          start: npm start
           wait-on: 'http://localhost:4200'
           browser: chrome
