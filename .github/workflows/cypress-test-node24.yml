@@ -1,24 +1,24 @@
-name: cypress-test-node16
+name: cypress-test-node24
 on:
   workflow_dispatch:
 
 jobs:
 
   start:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
-        node: [16]
+        node: [24]
     name: Angular E2E test on Node.js ${{ matrix.node }}
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Cypress tests
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           start: npm start
           wait-on: 'http://localhost:4200'
